@@ -26,13 +26,10 @@
         <div class="col-xs-12">
             <div id="page-view-chart" class="chart"></div>
         </div>
-        <!-- <div class="col-sm-4">
-            <div id="browser-chart" class="chart"></div>
-        </div> -->
     </div>
 
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-xs-8 col-sm-4">
             <div class="panel panel-default">
                 <div class="panel-body metric-panel text-center">
                     <%= number_with_delimiter(@site.site_events.where(created_at: @start_date..@end_date).count()) %>
@@ -42,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-xs-4 col-sm-2">
             <div class="panel panel-default">
                 <div class="panel-body metric-panel text-center">
                     <%= @site.get_unique_by(@start_date, @end_date, "ip").count() %>
@@ -52,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-xs-4 col-sm-2">
             <div class="panel panel-default">
                 <div class="panel-body metric-panel text-center">
                     <%= @site.get_unique_by(@start_date, @end_date, "path").count() %>
@@ -62,7 +59,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-xs-4 col-sm-2">
             <div class="panel panel-default">
                 <div class="panel-body metric-panel text-center">
                     <%= @site.get_unique_by(@start_date, @end_date, "browser").count() %>
@@ -72,7 +69,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-xs-4 col-sm-2">
             <div class="panel panel-default">
                 <div class="panel-body metric-panel text-center">
                     <%= @site.get_unique_by(@start_date, @end_date, "platform").count() %>
@@ -101,46 +98,12 @@
             <div class="tab-content">
                 <!-- Pages Content -->
                 <div role="tabpanel" class="tab-pane active" id="pages">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Page</th>
-                                    <th>Views</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% @popular_pages.each do |page| %>
-                                <tr>
-                                    <td><%= page.path %></td>
-                                    <td><%= number_with_delimiter(page.count) %></td>
-                                </tr>
-                                <% end %>
-                            </tbody>
-                        </table>
-                    </div>
+                <%= render partial: "pages" %>
                 </div>
 
                 <!-- Browsers Content -->
                 <div role="tabpanel" class="tab-pane" id="browsers">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Browser</th>
-                                    <th>Views</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% @browser_breakdown.each do |page| %>
-                                <tr>
-                                    <td><%= page.browser %></td>
-                                    <td><%= number_with_delimiter(page.count) %></td>
-                                </tr>
-                                <% end %>
-                            </tbody>
-                        </table>
-                    </div>
+                <%= render partial: "browsers" %>
                 </div>
 
                 <!-- Users Content -->
@@ -159,20 +122,6 @@
         startDate: "-1y",
         format: "yyyy-mm-dd"
     });
-
-    // Make monochrome colors and set them as default for all pies
-    Highcharts.getOptions().plotOptions.pie.colors = (function () {
-        var colors = [],
-            base = Highcharts.getOptions().colors[0],
-            i;
-
-        for (i = 0; i < 10; i += 1) {
-            // Start out with a darkened base color (negative brighten), and end
-            // up with a much brighter color
-            colors.push(Highcharts.Color(base).brighten((i - 3) / 7).get());
-        }
-        return colors;
-    }());
 
     $('#page-view-chart').highcharts({
         chart: {
@@ -199,44 +148,5 @@
             }
         ],
         credits: false
-    });
-
-    $('#browser-chart').highcharts({
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-        },
-        title: {
-            text: 'Visits By Browser'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: false,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    }
-                }
-            }
-        },
-        series: [{
-            name: 'Browsers',
-            colorByPoint: true,
-            data: <%= @browser_breakdown.map { |b| {name: b.browser, y: b.count} }.to_json.html_safe %>
-        }],
-        credits: false,
-        yAxis: {
-            title: {
-                text: null
-            }
-        }
     });
 <% end %>
