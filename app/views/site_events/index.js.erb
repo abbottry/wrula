@@ -27,7 +27,7 @@
     function main() {
         jQuery(document).ready(function($) {
             $.ajax({
-              url: 'http://local.dev:3000/site_events',
+              url: '<%= site_events_url %>',
               data: {
                 ip : '<%= request.remote_ip %>',
                 url: window.location.href,
