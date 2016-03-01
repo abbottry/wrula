@@ -9,7 +9,7 @@
         <tbody>
             <% @popular_pages.each do |page| %>
             <tr>
-                <td><%= link_to page.path, [@site.url, page.path].join() %></td>
+                <td><%= page.path %></td>
                 <td><%= number_with_delimiter(page.count) %></td>
             </tr>
             <% end %>

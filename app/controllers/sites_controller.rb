@@ -27,6 +27,7 @@ class SitesController < ApplicationController
     # @page_visit_data = @site.get_daily_visits_by(@start_date, @end_date, "path")
     @page_visit_data = @site.get_daily_visits(@start_date, @end_date)
     @browser_breakdown = SiteEvent.select("payload -> 'browser' as browser, count('browser')").where(site: @site).where(created_at: @start_date..@end_date).group('browser').order("count DESC")
+    @os_breakdown = SiteEvent.select("payload -> 'platform' as platform, count('platform')").where(site: @site).where(created_at: @start_date..@end_date).group('platform').order("count DESC")
   end
 
   # GET /sites/new
