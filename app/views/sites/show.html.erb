@@ -91,6 +91,9 @@
                     <a href="#browsers" aria-controls="browsers" role="tab" data-toggle="tab">Browsers</a>
                 </li>
                 <li role="presentation">
+                    <a href="#operating_systems" aria-controls="operating_systems" role="tab" data-toggle="tab">Operating Systems</a>
+                </li>
+                <li role="presentation">
                     <a href="#users" aria-controls="users" role="tab" data-toggle="tab">Users</a>
                 </li>
             </ul>
@@ -104,6 +107,11 @@
                 <!-- Browsers Content -->
                 <div role="tabpanel" class="tab-pane" id="browsers">
                 <%= render partial: "browsers" %>
+                </div>
+
+                <!-- OS Content -->
+                <div role="tabpanel" class="tab-pane" id="operating_systems">
+                <%= render partial: "operating_systems" %>
                 </div>
 
                 <!-- Users Content -->
