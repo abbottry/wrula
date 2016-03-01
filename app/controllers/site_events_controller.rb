@@ -11,6 +11,7 @@ class SiteEventsController < ApplicationController
     site = Site.find_by(account_id: params[:account_id])
 
     payload = site.generate_event_payload(params[:url])
+    payload[:useragent] = request.env['HTTP_USER_AGENT']
     payload[:ip] = params[:ip]
 
     SiteEvent.create(
