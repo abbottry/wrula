@@ -18,10 +18,10 @@ class SitesController < ApplicationController
     end
 
     @end_date = if params[:end_date]
-      Date.parse(params[:end_date])
+      DateTime.parse(params[:end_date])
     else
-      Date.today
-    end
+      DateTime.now
+    end.end_of_day
 
     @popular_pages = SiteEvent.select("payload -> 'path' as path, count('path')").where(site: @site).where(created_at: @start_date..@end_date).group('path').order("count DESC")
     # @page_visit_data = @site.get_daily_visits_by(@start_date, @end_date, "path")
