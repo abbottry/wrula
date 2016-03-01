@@ -1,0 +1,144 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= // require_tree .
+ *= require_self
+ */
+
+$brand-primary: #F39710;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding: 70px 0;
+}
+
+footer {
+  padding: 20px 0;
+  height: 60px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: $navbar-default-bg;
+  border-top: 1px solid $navbar-default-border;
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+  }
+
+  ul {
+      font-size: 1.3em;
+  }
+}
+
+.fa {
+    color: $brand-primary;
+}
+
+button, a.btn {
+  .fa {
+    color: #FFFFFF;
+  }
+}
+
+.subject-block {
+  a:hover {
+    text-decoration: none;
+  }
+  p {
+    // font-size: 2em;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: $brand-primary;
+  }
+  p.count {
+    font-size: 3em;
+  }
+}
+.dataset-block {
+  overflow: hidden;
+
+  .panel-heading {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .panel-body {
+    min-height: 150px;
+
+    .title {
+      // top: 50%;
+      // padding-top: -50;
+      // margin-left: -50px;
+      // transform: rotate(-5deg);
+      font-size: 1.5em;
+      // overflow: hidden;
+      font-weight: 900;
+      // line-height: 50px;
+      color: $brand-primary;
+    }
+
+    .subtitle {
+      color: $text-color;
+    }
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.assessment-banner {
+  .panel-body {
+    font-size: 4em;
+    font-weight: 900;
+    color: $brand-primary;
+  }
+
+  .start-assessment .panel-body {
+    &:hover {
+      background: $brand-primary;
+      .fa {
+        color: #FFFFFF;
+      }
+    }
+  }
+}
+
+.dashboard-panel {
+  .panel-body {
+    font-size: 5em;
+  }
+}
+
+#new-terms {
+  .well {
+    min-height: 270px;
+  }
+}
+
+.import-form {
+  span.fa {
+    color: $brand-primary;
+  }
+  span.fa-cloud-upload {
+    margin: 5px 0 0 0;
+    font-size: 4em;
+  }
+}

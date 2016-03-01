@@ -1,0 +1,18 @@
+@import "application";
+
+body {
+  padding: 50px 0 0 0;
+  margin-bottom: 0;
+}
+
+nav {
+  background-color: $navbar-default-bg;
+}
+
+footer {
+  position: relative;
+}
+
+.feature {
+  font-size: 3em;
+}

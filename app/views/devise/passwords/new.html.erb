@@ -1,0 +1,31 @@
+<h1 class="page-header text-center">Reset My <%= t("branding.site_name") %> Password</h1>
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <p>Forget your password? No problem, provide the email address tied to your account and we'll send you instruction for resetting your password.</p>
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= errors_for(resource) %>
+
+      <div class="well well-sm">
+        <div class="form-group">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+          <p class="help-block">Must be the email address you used to signup for <%= t("branding.site_name") %>.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <%= render "devise/shared/links" %>
+        </div>
+
+        <div class="col-xs-6 text-right">
+          <%= f.submit "Send Reset Instructions", class: "btn btn-primary" %>
+        </div>
+
+      </div>
+    <% end %>
+
+  </div>
+</div>

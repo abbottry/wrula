@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="page-header">Your Sites</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Url</th>
+            <th>Account</th>
+            <th>Visits (30 days)</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @sites.each do |site| %>
+            <tr>
+              <td><%= site.name %></td>
+              <td><%= site.url %></td>
+              <td><%= site.account_id %></td>
+              <td><%= number_with_delimiter(site.site_events.count()) %></td>
+              <td><%= link_to 'Show', site %></td>
+              <td><%= link_to 'Edit', edit_site_path(site) %></td>
+              <td><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <br>
+
+      <%= link_to 'New Site', new_site_path %>
+
+    </div>
+  </div>
+</div>
