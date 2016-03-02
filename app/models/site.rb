@@ -6,6 +6,8 @@ class Site < ActiveRecord::Base
 
   has_many :site_events, dependent: :destroy
 
+  validates :name, presence: true
+
   before_create :set_account_id
 
   def set_account_id

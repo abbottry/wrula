@@ -97,7 +97,7 @@ namespace :site_events do
 
             events = []
             ips.each do |ip|
-                rand(10000).times do
+                rand(1000).times do
                     event_url = Faker::Internet.url(site.url, "#{paths.shuffle.first}")
 
                     payload = site.generate_event_payload(event_url)

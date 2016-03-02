@@ -1,6 +1,23 @@
-<h1>Editing Site</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="page-header">Edit <%= @site.name %></h1>
+        </div>
+    </div>
 
-<%= render 'form' %>
+    <%= form_for(:site, url: site_path(@site), html: { method: :patch }) do |f| %>
+        <div class="row">
+            <div class="col-xs-12">
+                <%= errors_for(@site) %>
+            </div>
+        </div>
 
-<%= link_to 'Show', @site %> |
-<%= link_to 'Back', sites_path %>
+        <%= render "form", f: f %>
+
+        <div class="row">
+            <div class="col-sm-2 col-sm-offset-10">
+                <%= f.submit class: "btn btn-primary btn-block" %>
+            </div>
+        </div>
+    <% end %>
+</div>

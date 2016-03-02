@@ -14,7 +14,7 @@ class SitesController < ApplicationController
     @start_date = if params[:start_date]
       Date.parse(params[:start_date])
     else
-      30.days.ago.to_date
+      6.days.ago.to_date
     end
 
     @end_date = if params[:end_date]
@@ -23,11 +23,16 @@ class SitesController < ApplicationController
       DateTime.now
     end.end_of_day
 
+    # table data
     @popular_pages = SiteEvent.select("payload -> 'path' as path, count('path')").where(site: @site).where(created_at: @start_date..@end_date).group('path').order("count DESC")
-    # @page_visit_data = @site.get_daily_visits_by(@start_date, @end_date, "path")
     @page_visit_data = @site.get_daily_visits(@start_date, @end_date)
+
+    # tab data
     @browser_breakdown = SiteEvent.select("payload -> 'browser' as browser, count('browser')").where(site: @site).where(created_at: @start_date..@end_date).group('browser').order("count DESC")
     @os_breakdown = SiteEvent.select("payload -> 'platform' as platform, count('platform')").where(site: @site).where(created_at: @start_date..@end_date).group('platform').order("count DESC")
+    @ip_breakdown = SiteEvent.select("payload -> 'ip' as ip, count('ip')").where(site: @site).where(created_at: @start_date..@end_date).group('ip').order("count DESC")
+    @user_status_breakdown = SiteEvent.select("payload -> 'is_returning' as is_returning, count('is_returning')").where(site: @site).where(created_at: @start_date..@end_date).group('is_returning').order("count DESC")
+
   end
 
   # GET /sites/new

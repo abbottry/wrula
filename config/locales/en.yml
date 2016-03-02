@@ -27,3 +27,7 @@ en:
       signin: "Sign In"
       signout: "Sign Out"
       signup: "Sign Up"
+  activerecord:
+    attributes:
+      site:
+        url: "URL"
