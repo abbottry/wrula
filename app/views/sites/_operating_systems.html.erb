@@ -7,14 +7,14 @@
                 <thead>
                     <tr>
                         <th>Browser</th>
-                        <th>Views</th>
+                        <th class="col-xs-2">Views</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% @os_breakdown.each do |page| %>
                     <tr>
                         <td><%= page.platform %></td>
-                        <td><%= number_with_delimiter(page.count) %></td>
+                        <td class="col-xs-2"><%= number_with_delimiter(page.count) %></td>
                     </tr>
                     <% end %>
                 </tbody>
@@ -67,7 +67,7 @@
                 dataLabels: {
                     enabled: false
                 },
-                showInLegend: true
+                // showInLegend: true
             }
         },
         series: [{

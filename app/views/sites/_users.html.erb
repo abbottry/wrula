@@ -7,14 +7,14 @@
                 <thead>
                     <tr>
                         <th>IP Address</th>
-                        <th>Views</th>
+                        <th class="col-xs-2">Views</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% @ip_breakdown.each do |page| %>
                     <tr>
                         <td><%= page.ip %></td>
-                        <td><%= number_with_delimiter(page.count) %></td>
+                        <td class="col-xs-2"><%= number_with_delimiter(page.count) %></td>
                     </tr>
                     <% end %>
                 </tbody>

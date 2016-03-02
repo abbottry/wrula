@@ -1,0 +1,8 @@
+<div class="well well-sm text-center">
+    <h4>Installing <%= t("branding.site_name") %> Analytics</h4>
+    <p>To begin collecting data for this site, copy and paste the code below into every webpage you want to track.</p>
+
+    <code>
+        <%= raw (CGI::escapeHTML content_tag(:script, nil, type: "text/javascript", src: site_events_url(account_id: site.account_id))) %>
+    </code>
+</div>

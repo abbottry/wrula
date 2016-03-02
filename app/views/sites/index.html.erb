@@ -25,8 +25,8 @@
               <td><%= site.name %></td>
               <td><%= site.url %></td>
               <td class="col-xs-1"><%= link_to 'Show', site %></td>
-              <td class="col-xs-1"><%= link_to 'Edit', edit_site_path(site) %></td>
-              <td class="col-xs-1"><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td class="col-xs-1"><%= link_to 'Settings', edit_site_path(site) %></td>
+              <td class="col-xs-1"><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure you want to delete this site and all associated data?' } %></td>
             </tr>
           <% end %>
         </tbody>

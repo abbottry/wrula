@@ -5,6 +5,14 @@
         </div>
     </div>
 
+    <% unless @site.site_events.any? %>
+    <div class="row">
+        <div class="col-xs-12">
+            <%= render partial: "installation", locals: { site: @site } %>
+        </div>
+    </div>
+    <% end %>
+
     <div class="row">
         <form>
             <div class="col-sm-6 hidden-xs">
