@@ -50,20 +50,10 @@
         <div class="col-xs-4 col-sm-2">
             <div class="panel panel-default">
                 <div class="panel-body metric-panel text-center">
-                    <%= @site.get_unique_by(@start_date, @end_date, "ip").count() %>
-                </div>
-                <div class="panel-footer text-center">
-                    Unique Visits
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-4 col-sm-2">
-            <div class="panel panel-default">
-                <div class="panel-body metric-panel text-center">
                     <%= @site.get_unique_by(@start_date, @end_date, "path").count() %>
                 </div>
                 <div class="panel-footer text-center">
-                    Unique Pages
+                    Pages
                 </div>
             </div>
         </div>
@@ -84,6 +74,16 @@
                 </div>
                 <div class="panel-footer text-center">
                     Operating Systems
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4 col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-body metric-panel text-center">
+                    <%= @site.get_unique_by(@start_date, @end_date, "ip").count() %>
+                </div>
+                <div class="panel-footer text-center">
+                    Users
                 </div>
             </div>
         </div>
