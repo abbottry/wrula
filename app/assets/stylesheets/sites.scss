@@ -9,16 +9,6 @@
     font-size: 2em;
     font-weight: bold;
 }
-
-
-/* bootstrap hack: fix content width inside hidden tabs */
-.tab-content > .tab-pane,
-.pill-content > .pill-pane {
-    display: block;     /* undo display:none          */
-    height: 0;          /* height:0 is also invisible */
-    overflow-y: hidden; /* no-overflow                */
+.panel-footer {
+    font-size: 2vh;
 }
-.tab-content > .active,
-.pill-content > .active {
-    height: auto;       /* let the content decide it  */
-} /* bootstrap hack end */

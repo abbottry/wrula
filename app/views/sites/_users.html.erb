@@ -2,31 +2,29 @@
     <div class="col-sm-9">
         <h3>Page Views By IP Address</h3>
 
-        <div class="table-responsive">
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>IP Address</th>
-                        <th class="col-xs-2">Views</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% @ip_breakdown.each do |page| %>
-                    <tr>
-                        <td><%= page.ip %></td>
-                        <td class="col-xs-2"><%= number_with_delimiter(page.count) %></td>
-                    </tr>
-                    <% end %>
-                </tbody>
-            </table>
-        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>IP Address</th>
+                    <th class="col-xs-2">Views</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @ip_breakdown.each do |page| %>
+                <tr>
+                    <td><%= page.ip %></td>
+                    <td class="col-xs-2"><%= number_with_delimiter(page.count) %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
     </div>
 
     <div class="col-sm-3">
         <div class="panel panel-default">
             <div class="panel-heading">New vs Returning Users</div>
             <div class="panel-body">
-                <div id="ip-chart" class="chart"></div>
+                <div id="ip-chart" class="chart contains-chart"></div>
             </div>
         </div>
     </div>

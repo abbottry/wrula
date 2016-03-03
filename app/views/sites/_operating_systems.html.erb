@@ -2,31 +2,29 @@
     <div class="col-sm-9">
         <h3>Page Views By Operating System</h3>
 
-        <div class="table-responsive">
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>Browser</th>
-                        <th class="col-xs-2">Views</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% @os_breakdown.each do |page| %>
-                    <tr>
-                        <td><%= page.platform %></td>
-                        <td class="col-xs-2"><%= number_with_delimiter(page.count) %></td>
-                    </tr>
-                    <% end %>
-                </tbody>
-            </table>
-        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Browser</th>
+                    <th class="col-xs-2">Views</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @os_breakdown.each do |page| %>
+                <tr>
+                    <td><%= page.platform %></td>
+                    <td class="col-xs-2"><%= number_with_delimiter(page.count) %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
     </div>
 
     <div class="col-sm-3">
         <div class="panel panel-default">
             <div class="panel-heading">Operating Systems</div>
             <div class="panel-body">
-                <div id="os-chart" class="chart"></div>
+                <div id="os-chart" class="chart contains-chart"></div>
             </div>
         </div>
     </div>
