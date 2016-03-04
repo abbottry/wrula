@@ -1,7 +1,29 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <h1 class="page-header"><%= @site.name %> <small><%= @site.url %></small></h1>
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-sm-8 col-md-9">
+                        <h1><%= @site.name %> <small><%= @site.url %></small></h1>
+                    </div>
+                    <div class="col-sm-4 col-md-3">
+                        <div class="btn-group btn-group-justified">
+                            <%= link_to "Settings", edit_site_path(@site), class: "btn btn-success" %>
+
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    Sites <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <% current_user.sites.each do |site| %>
+                                    <li><%= link_to site.name, site_path(site) %></li>
+                                    <% end %>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
