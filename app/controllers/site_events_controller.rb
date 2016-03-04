@@ -5,14 +5,21 @@ class SiteEventsController < ApplicationController
   respond_to :js
 
   def index
+    # supplies the javascript that is ultimately rendered on a client site
   end
 
   def create
+    # every time the index action is called, the script rendered there will
+    # gather information from the client site, and send it as a POST request
+    # to this action to then be stored
+
+    # the account_id is how we determine what site were receiving events for
     site = Site.find_by(account_id: params[:account_id])
 
-    payload = site.generate_event_payload(params[:url])
-    payload[:useragent] = request.env['HTTP_USER_AGENT']
+    payload = Site.parse_full_url(params[:url])
     payload[:ip] = params[:ip]
+
+    payload[:useragent] = request.env['HTTP_USER_AGENT']
 
     SiteEvent.create(
       site: site,

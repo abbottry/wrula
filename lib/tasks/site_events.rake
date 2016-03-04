@@ -1,7 +1,7 @@
 namespace :site_events do
     desc "TODO"
     task generate: :environment do
-        ips = (1..rand(300)).map { Faker::Internet.ip_v4_address }
+        ips = (1..rand(500)).map { Faker::Internet.ip_v4_address }
         paths = [
             "/",
             "/team",
@@ -97,10 +97,10 @@ namespace :site_events do
 
             events = []
             ips.each do |ip|
-                rand(1000).times do
+                rand(2000).times do
                     event_url = Faker::Internet.url(site.url, "#{paths.shuffle.first}")
 
-                    payload = site.generate_event_payload(event_url)
+                    payload = Site.parse_full_url(event_url)
                     payload[:ip] = ip
                     payload[:useragent] = useragents.shuffle.first
 

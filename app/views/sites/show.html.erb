@@ -50,7 +50,7 @@
         <div class="col-xs-6 col-sm-2">
             <div class="panel panel-default">
                 <div class="panel-body metric-panel text-center">
-                    <%= @site.get_unique_by(@start_date, @end_date, "path").count() %>
+                    <%= @site.get_unique_count_by(@start_date, @end_date, "path").count() %>
                 </div>
                 <div class="panel-footer text-center">
                     Pages
@@ -60,7 +60,7 @@
         <div class="col-xs-6 col-sm-2">
             <div class="panel panel-default">
                 <div class="panel-body metric-panel text-center">
-                    <%= @site.get_unique_by(@start_date, @end_date, "browser").count() %>
+                    <%= @site.get_unique_count_by(@start_date, @end_date, "browser").count() %>
                 </div>
                 <div class="panel-footer text-center">
                     Browsers
@@ -70,7 +70,7 @@
         <div class="col-xs-6 col-sm-2">
             <div class="panel panel-default">
                 <div class="panel-body metric-panel text-center">
-                    <%= @site.get_unique_by(@start_date, @end_date, "platform").count() %>
+                    <%= @site.get_unique_count_by(@start_date, @end_date, "platform").count() %>
                 </div>
                 <div class="panel-footer text-center">
                     Operating Systems
@@ -80,7 +80,7 @@
         <div class="col-xs-6 col-sm-2">
             <div class="panel panel-default">
                 <div class="panel-body metric-panel text-center">
-                    <%= @site.get_unique_by(@start_date, @end_date, "ip").count() %>
+                    <%= @site.get_unique_count_by(@start_date, @end_date, "ip").count() %>
                 </div>
                 <div class="panel-footer text-center">
                     Users
