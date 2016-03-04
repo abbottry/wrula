@@ -24,7 +24,7 @@ class SitesController < ApplicationController
     end.end_of_day
 
     # table data
-    @popular_pages = SiteEvent.select("payload -> 'url' as url, payload -> 'path' as path, count('path')").where(site: @site).where(created_at: @start_date..@end_date).group('path, url').order("count DESC")
+    @popular_pages = SiteEvent.select("payload -> 'path' as path, count('path')").where(site: @site).where(created_at: @start_date..@end_date).group('path').order("count DESC")
     @page_visit_data = @site.get_daily_visits(@start_date, @end_date)
 
     # tab data

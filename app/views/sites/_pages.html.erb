@@ -12,7 +12,7 @@
             <tbody>
                 <% @popular_pages.each do |page| %>
                 <tr>
-                    <td><%= link_to page.path, page.url %></td>
+                    <td><%= page.path %></td>
                     <td class="col-xs-2"><%= number_with_delimiter(page.count) %></td>
                 </tr>
                 <% end %>
